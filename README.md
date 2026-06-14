@@ -21,19 +21,17 @@ Data CSVs → Validation → Feature Engineering → Rule Engine + ML → Risk S
 ```
 
 ### Risk Scoring Formula
-
 ```
 Final Risk = 40% Rule Score + 35% ML Score + 25% Context Score
 ```
 
 ### Risk Levels
-
-| Score Range | Level    |
-| ----------- | -------- |
-| 0-30        | LOW      |
-| 31-60       | MEDIUM   |
-| 61-80       | HIGH     |
-| 81-100      | CRITICAL |
+| Score Range | Level |
+|------------|-------|
+| 0-30 | LOW |
+| 31-60 | MEDIUM |
+| 61-80 | HIGH |
+| 81-100 | CRITICAL |
 
 ---
 
@@ -75,7 +73,6 @@ pip install -r requirements.txt
 ### 2. Place Data Files
 
 Copy your CSV files to the `data/` directory:
-
 - `data/identity_users.csv`
 - `data/identity_events.csv`
 
@@ -102,19 +99,19 @@ uvicorn main:app --reload --port 8000
 
 ## 🔌 API Endpoints
 
-| Method | Endpoint                        | Description                 |
-| ------ | ------------------------------- | --------------------------- |
-| POST   | `/analyze`                      | Run full analysis pipeline  |
-| GET    | `/summary`                      | Executive dashboard summary |
-| GET    | `/top-risks`                    | Top N risky users           |
-| GET    | `/report/{user_id}`             | Full investigation report   |
-| GET    | `/users`                        | List users with filters     |
-| GET    | `/findings`                     | Get risk findings           |
-| GET    | `/graph`                        | Privilege graph data        |
-| GET    | `/graph/blast-radius/{user_id}` | Blast radius analysis       |
-| GET    | `/metrics`                      | Evaluation metrics          |
-| POST   | `/feedback`                     | Submit analyst feedback     |
-| GET    | `/health`                       | Health check                |
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/analyze` | Run full analysis pipeline |
+| GET | `/summary` | Executive dashboard summary |
+| GET | `/top-risks` | Top N risky users |
+| GET | `/report/{user_id}` | Full investigation report |
+| GET | `/users` | List users with filters |
+| GET | `/findings` | Get risk findings |
+| GET | `/graph` | Privilege graph data |
+| GET | `/graph/blast-radius/{user_id}` | Blast radius analysis |
+| GET | `/metrics` | Evaluation metrics |
+| POST | `/feedback` | Submit analyst feedback |
+| GET | `/health` | Health check |
 
 ---
 
@@ -130,15 +127,15 @@ uvicorn main:app --reload --port 8000
 
 ## 🧠 Detection Rules
 
-| #   | Rule                     | Weight | Description                        |
-| --- | ------------------------ | ------ | ---------------------------------- |
-| 1   | Stale Privileged Account | 25     | Admin inactive > 30 days           |
-| 2   | Excessive Privileges     | 20     | More access than role requires     |
-| 3   | Off-Hours Admin Activity | 15     | Admin operations at night          |
-| 4   | Cross-Department Access  | 15     | Accessing other dept resources     |
-| 5   | Privilege Escalation     | 25     | Non-admin performing admin ops     |
-| 6   | Service Account Misuse   | 20     | Anomalous service account behavior |
-| 7   | Bulk Data Export         | 30     | Potential data exfiltration        |
+| # | Rule | Weight | Description |
+|---|------|--------|-------------|
+| 1 | Stale Privileged Account | 25 | Admin inactive > 30 days |
+| 2 | Excessive Privileges | 20 | More access than role requires |
+| 3 | Off-Hours Admin Activity | 15 | Admin operations at night |
+| 4 | Cross-Department Access | 15 | Accessing other dept resources |
+| 5 | Privilege Escalation | 25 | Non-admin performing admin ops |
+| 6 | Service Account Misuse | 20 | Anomalous service account behavior |
+| 7 | Bulk Data Export | 30 | Potential data exfiltration |
 
 ---
 
@@ -171,19 +168,18 @@ docker run -p 8000:8000 -p 8501:8501 sentineliq
 
 ## 📈 Evaluation Targets
 
-| Metric    | Target |
-| --------- | ------ |
-| Precision | > 85%  |
-| Recall    | > 80%  |
-| F1 Score  | > 0.75 |
-| ROC-AUC   | > 0.80 |
+| Metric | Target |
+|--------|--------|
+| Precision | > 85% |
+| Recall | > 80% |
+| F1 Score | > 0.75 |
+| ROC-AUC | > 0.80 |
 
 ---
 
 ## 🔑 LLM Configuration (Optional)
 
 Set environment variable for LLM-powered analysis:
-
 ```bash
 export OPENAI_API_KEY=your-key-here
 ```
@@ -205,10 +201,10 @@ Without an API key, the system uses intelligent rule-based fallback explanations
 
 Target Score: **85+ Points**
 
-| Category          | Points | Our Approach                    |
-| ----------------- | ------ | ------------------------------- |
-| Detection Quality | 30     | 7 rules + ML + context          |
-| Explainability    | 25     | LLM + compliance mapping        |
-| Actionability     | 20     | Recommendations + SLAs          |
-| Code Quality      | 15     | Modular + typed + tested        |
-| Bonus Features    | 10     | Graph + feedback + blast radius |
+| Category | Points | Our Approach |
+|----------|--------|--------------|
+| Detection Quality | 30 | 7 rules + ML + context |
+| Explainability | 25 | LLM + compliance mapping |
+| Actionability | 20 | Recommendations + SLAs |
+| Code Quality | 15 | Modular + typed + tested |
+| Bonus Features | 10 | Graph + feedback + blast radius |
